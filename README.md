@@ -17,15 +17,32 @@ As shown in reference paper, MANNs(Memory-Augmented Neural Networks) refer to th
 * numpy==1.16.4  
 * PIL==7.1.1  
 
-## Omniglot DataSet  
+## Usage
+### Omniglot DataSet  
 Download [images_background.zip](https://github.com/brendenlake/omniglot/blob/master/python/images_background.zip) (964 classes) and [images_evaluation.zip](https://github.com/brendenlake/omniglot/blob/master/python/images_evaluation.zip) (679 classes),
 and place them in the [./omniglot](omniglot) folder.  
 
-## Running  
+### Running  
 `python run_mann.py`  
 `python run_mann.py --mode test`  
 `python run_mann.py --model LSTM`  
 `python run_mann.py --model LSTM --mode test`
+
+### Class MANNCell()
+```python  
+from mann.mann_cell import MANNCell
+cell = MANNCell(
+    self.lstm_size = 200, 
+    self.memory_size = 128,
+    self.memory_dim = 40,
+    self.nb_reads = 4,
+    gamma = 0.95
+)
+state = cell.zero_state(batch_size, tf.float32)  
+output, state = tf.scan(lambda init, elem: cell(elem, init[1]), elems=tf.transpose(input, perm=[1, 0, 2]), initializer=(tf.zeros(shape=(batch_size, lstm_size+nb_reads*memory_size)), state))  
+output = tf.transpose(output, perm=[1, 0, 2])
+```
+
 
 
 ## Performance  
