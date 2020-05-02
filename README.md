@@ -18,7 +18,7 @@ As shown in reference paper, MANNs(Memory-Augmented Neural Networks) refer to th
 * PIL==7.1.1  
 
 ## Omniglot DataSet  
-Download [images_background.zip](https://github.com/brendenlake/omniglot/blob/master/python/images_background.zip) (964 classes) and [images_evaluation.zip](https://github.com/brendenlake/omniglot/blob/master/python/images_evaluation.zip) (679 classes)
+Download [images_background.zip](https://github.com/brendenlake/omniglot/blob/master/python/images_background.zip) (964 classes) and [images_evaluation.zip](https://github.com/brendenlake/omniglot/blob/master/python/images_evaluation.zip) (679 classes),
 and place them in the [./omniglot](omniglot) folder.  
 
 ## Running  
