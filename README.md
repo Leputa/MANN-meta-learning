@@ -32,14 +32,14 @@ and place them in the [./omniglot](omniglot) folder.
 ```python  
 from mann.mann_cell import MANNCell
 cell = MANNCell(
-    self.lstm_size = 200, 
-    self.memory_size = 128,
-    self.memory_dim = 40,
-    self.nb_reads = 4,
+    lstm_size = 200, 
+    memory_size = 128,
+    memory_dim = 40,
+    nb_reads = 4,
     gamma = 0.95
 )
 state = cell.zero_state(batch_size, tf.float32)  
-output, state = tf.scan(lambda init, elem: cell(elem, init[1]), elems=tf.transpose(input, perm=[1, 0, 2]), initializer=(tf.zeros(shape=(batch_size, lstm_size+nb_reads*memory_size)), state))  
+output, state = tf.scan(lambda init, elem: cell(elem, init[1]), elems=tf.transpose(input, perm=[1, 0, 2]), initializer=(tf.zeros(shape=(batch_size, lstm_size+nb_reads*memory_dim)), state))  
 output = tf.transpose(output, perm=[1, 0, 2])
 ```
 
